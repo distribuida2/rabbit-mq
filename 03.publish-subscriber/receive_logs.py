@@ -6,9 +6,9 @@ connection = pika.BlockingConnection(pika.ConnectionParameters(
 channel = connection.channel()
 
 channel.exchange_declare(exchange='logs',
-                         type='fanout')
+                         exchange_type='fanout')
 
-result = channel.queue_declare(exclusive=True)
+result = channel.queue_declare(queue='queue_logs', exclusive=True, durable= True)
 queue_name = result.method.queue
 
 channel.queue_bind(exchange='logs',
@@ -16,11 +16,12 @@ channel.queue_bind(exchange='logs',
 
 print(' [*] Waiting for logs. To exit press CTRL+C')
 
+
 def callback(ch, method, properties, body):
     print(" [x] %r" % body)
 
-channel.basic_consume(callback,
-                      queue=queue_name,
-                      no_ack=True)
+
+channel.basic_consume(on_message_callback=callback,
+                      queue=queue_name)
 
 channel.start_consuming()
