@@ -9,7 +9,7 @@
 - [Reliability](https://www.rabbitmq.com/reliability.html)
 - [Clustering](https://www.rabbitmq.com/clustering.html)
 
-- [RabbitMQ en Mercado Libre](http://blogs.vmware.com/vfabric/2013/01/messaging-architecture-using-rabbitmq-at-the-worlds-8th-largest-retailer.html)
+- [RabbitMQ en Mercado Libre](https://docs.google.com/document/d/1SX2DBTJ8pOYnrbM525AtJMFtg6_wZQBrMZOkxO1Qpt8/edit)
 
 
 ## Consola de Rabbit
