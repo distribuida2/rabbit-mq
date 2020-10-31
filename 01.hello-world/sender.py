@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-"""Esto es un docstring"""
+#!/usr/bin/env python3
 
 import pika
 

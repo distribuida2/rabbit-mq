@@ -4,7 +4,7 @@ import pika
 
 
 def callback(ch, method, properties, body):
-    print(" [x] Received %r" % body)
+    print(" [x] Received DLX %r" % body)
     reason = properties.headers['x-death'][0]['reason']
     if reason != 'rejected':
         print('Problema técnico. Revisar')

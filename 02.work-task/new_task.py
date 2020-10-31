@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import pika
 import sys
 
@@ -13,7 +13,8 @@ channel.basic_publish(exchange='',
                       routing_key='task_queue',
                       body=message,
                       properties=pika.BasicProperties(
-                         delivery_mode = 2, # make message persistent
+                        # make message persistent
+                        delivery_mode=2,
                       ))
 print(" [x] Sent %r" % message)
 connection.close()
