@@ -13,7 +13,7 @@ channel.basic_publish(exchange='',
                       routing_key='task_queue',
                       body=message,
                       properties=pika.BasicProperties(
-                        # make message persistent
+                        # necesario si queremos que los mensajes sean persistentes
                         delivery_mode=2,
                       ))
 print(" [x] Sent %r" % message)
