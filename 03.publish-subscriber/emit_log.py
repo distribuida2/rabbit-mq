@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import pika
 import sys
 
@@ -9,9 +9,9 @@ channel = connection.channel()
 channel.exchange_declare(exchange='logs',
                          exchange_type='fanout')
 
-message = ' '.join(sys.argv[1:]) or "info: Hello World!"
+message = ' '.join(sys.argv[1:]) or "info: tarea normal"
 channel.basic_publish(exchange='logs',
-                      routing_key='',
+                      routing_key='cualquier cosa',
                       body=message)
 print(" [x] Sent %r" % message)
 connection.close()
