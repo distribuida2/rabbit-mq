@@ -26,6 +26,7 @@ channel = connection.channel()
 
 channel.exchange_declare(exchange='work_exchange', exchange_type='direct')
 channel.exchange_declare(exchange='retry_exchange', exchange_type='direct')
+
 channel.queue_declare(
     queue='work_queue',
     durable=True,
@@ -35,13 +36,14 @@ channel.queue_declare(
         "x-message-ttl": 10000
     }
 )
-channel.queue_bind(queue='work_queue', exchange='work_exchange')
 channel.queue_declare(queue='retry_queue', durable=True,)
+
+channel.queue_bind(queue='work_queue', exchange='work_exchange')
 channel.queue_bind(queue='retry_queue', exchange='retry_exchange')
 
 print(' [*] Esperando mensajes para procesar...')
 
-channel.basic_qos(prefetch_count=1)
+# channel.basic_qos(prefetch_count=1)
 channel.basic_consume(on_message_callback=callback,
                       queue='work_queue')
 

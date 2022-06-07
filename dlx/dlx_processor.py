@@ -7,6 +7,7 @@ republished_key = 'republished'
 
 def estrategia_casos_raros(ch, method, properties, body):
     print('[DLQ] Problema raro. Reencolamos.')
+    channel.basic_ack(delivery_tag=method.delivery_tag)
 
 
 def estrategia_rejected(ch, method, properties, body):
@@ -49,7 +50,6 @@ channel = connection.channel()
 
 print(' [*] Esperando mensajes en la retry queue...')
 
-channel.queue_bind(queue='retry_queue', exchange='retry_exchange')
 channel.basic_consume(on_message_callback=callback,
                       queue='retry_queue')
 
