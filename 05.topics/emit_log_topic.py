@@ -5,6 +5,7 @@ import sys
 connection = pika.BlockingConnection(
     pika.ConnectionParameters(host='localhost'))
 channel = connection.channel()
+# channel.confirm_delivery()
 
 # update.price.title
 # update.price
